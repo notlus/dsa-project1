@@ -20,23 +20,25 @@ Print a message:
 """
 
 
-def unique_phone_numbers(records):
+def unique_phone_numbers(call_records, text_records):
     """
     Given a list of call or text records, return the count of unique phone numbers present.
     Time complexity: O(2n)
     Space complexity: O(k), where k = the number of unique phone numbers
     """
     phone_numbers = set()
-    for record in records:
+    for record in call_records:
+        phone_numbers.add(record[0])
+        phone_numbers.add(record[1])
+
+    for record in text_records:
         phone_numbers.add(record[0])
         phone_numbers.add(record[1])
 
     return len(phone_numbers)
 
 
-# Overall time complexity: O(texts + calls) -> O(n)
-text_phone_numbers = unique_phone_numbers(texts)
-call_phone_numbers = unique_phone_numbers(calls)
+total_numbers = unique_phone_numbers(calls, texts)
 
 print("There are {} different telephone numbers in the records.".format(
-    text_phone_numbers + call_phone_numbers))
+    total_numbers))
