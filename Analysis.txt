@@ -1,24 +1,67 @@
 Task0
 * Time complexity: O(1)
+    Access to the elements in the `calls` and `texts` can be done in constant time and does not
+    depend on the size of the lists.
+
 * Space complexity: O(1)
+    A single element from each list is being retrieved, so the space required does not depend on the
+    input.
 
 Task1
-* Time complexity: O(2n) -> O(n)
-* Space complexity: O(k), where k = the number of unique phone numbers
+* Time complexity: O(n)
+    The call and text lists both are enumerated one time. This is an O(n) operation for each list,
+    or O(2n).
+
+* Space complexity: O(k)
+    A set is used to store all of the unique phone numbers. The number of unique phone numbers is a
+    subset (k) of the full list of phone numbers (n). This gives the space complexity as O(k).
 
 Task2
 * Time complexity: O(n)
+    The list of calls is enumerated once, yielding n operations, which is O(n). During each
+    iteration, two dictionary lookups are performed, each of which take constant time O(1).
+    Subsequently, the maximum value is retrieved from the dictionary that mapes numbers to call
+    durations. This requires O(k) time, where k is the number of phone numbers in the dictionary.
+    The overall time complexity is O(n).
+
 * Space complexity: O(k), where k = the number of unique phone numbers
+    Extra space (k) is needed to store the dictionary of phone numbres to durations.
 
 Task3
 Part A
-    * Time complexity: O(nlogn)
-    * Space complexity: O(n) - The size of the set of unique prefixes
+    * Time complexity: O(nlog(n))
+        The list of calls is enumerated once, yielding n operations, which is O(n). During each
+        iteration, matching prefixes are added to the set of of prefixes. This is a constant time
+        operation O(1). Subsequently, the set of prefixes is sorted, which takes O(nlog(n)) time.
+        This gives an time complexity of O(n) + O(nlog(n), which overall is O(nlog(n)).
+
+    * Space complexity: O(k)
+        Extra space (k) is needed to store the set of unique prefixes.
 
 Part B
     * Time complexity: O(n)
+        The list of calls is enumerated once, yielding n operations, which is O(n) and in each
+        iteration, the prefixes are checked in constant time. The percentage is calculated in
+        constant time.
+
     * Space complexity: O(1)
+        No additional storage is required, based on the size of the input, so the complexity is
+        O(1).
 
 Task4
-* Time complexity: O(n + s), where s is the size of the difference set
-* Space complexity: O(3s), where s is the size the sender, receiver and difference sets
+* Time complexity: O(nlog(n))
+    The list of calls is enumerated once, yielding n operations, which is O(n). During each
+    iteration, two constant time set operations are performed. This yields O(n) time complexity for
+    the first loop.
+
+    A new set of differences is calculated in O(k) time, where k is the size of the set.
+
+    The list of texts is enumerated once, yielding n operations, which is O(n). Two constant time
+    lookups are performed in each iteration.
+
+    Lastly, the set of differences, k, is sorted, which takes O(klog(k)) time. The overall time
+    complexity is O(n) + O(k) + O(klog(k)), which is O(nlog(n)).
+
+* Space complexity: O(senders + receivers + differences)
+    Extra space is needed to store the sets of senders, receivers and differences. The space
+    complexity becomes O(senders + receivers + differences).
