@@ -55,7 +55,7 @@ def get_telemarketers():
         if text[1] in differences:
             differences.remove(text[1])
 
-    return differences
+    return sorted(list(differences))
 
 telemarketers = get_telemarketers()
 
